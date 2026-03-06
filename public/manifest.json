@@ -1,0 +1,61 @@
+{
+  "name": "Pregnancy Care Tracker",
+  "short_name": "Pregnancy Care",
+  "description": "Công cụ theo dõi thai kỳ - Cân nặng, cảnh báo, thông tin thai kỳ",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#1f7a4f",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192x192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/icons/icon-192x192.svg",
+      "sizes": "540x720",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["health", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Nhập cân nặng",
+      "short_name": "Cân nặng",
+      "description": "Nhập bản ghi cân nặng mới",
+      "url": "/?tab=weight",
+      "icons": [
+        {
+          "src": "/icons/icon-192x192.svg",
+          "sizes": "192x192",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Xem thông tin thai kỳ",
+      "short_name": "Thông tin",
+      "description": "Xem thông tin chi tiết về thai kỳ",
+      "url": "/?tab=pregnancy",
+      "icons": [
+        {
+          "src": "/icons/icon-192x192.svg",
+          "sizes": "192x192",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ]
+}
