@@ -287,6 +287,65 @@ export default function HomePage() {
     setWeightLogs((logsRes.data || []) as WeightLog[]);
   };
 
+  const updateWeightLog = async (
+    id: string,
+    payload: { date: string; weight_kg: number; note: string | null },
+  ) => {
+    if (!db) {
+      return;
+    }
+
+    const { error } = await db
+      .from("weight_logs")
+      .update({
+        date: payload.date,
+        weight_kg: payload.weight_kg,
+        note: payload.note,
+      })
+      .eq("id", id)
+      .eq("user_id", USER_ID);
+
+    if (error) {
+      setNotice(`Cập nhật cân nặng thất bại: ${error.message}`);
+      return;
+    }
+
+    const logsRes = await db
+      .from("weight_logs")
+      .select("id, user_id, date, weight_kg, note, created_at")
+      .eq("user_id", USER_ID)
+      .order("date", { ascending: true });
+
+    setWeightLogs((logsRes.data || []) as WeightLog[]);
+    setNotice("Đã cập nhật bản ghi cân nặng.");
+  };
+
+  const deleteWeightLog = async (id: string) => {
+    if (!db) {
+      return;
+    }
+
+    const { error } = await db
+      .from("weight_logs")
+      .delete()
+      .eq("id", id)
+      .eq("user_id", USER_ID);
+
+    if (error) {
+      setNotice(`Xóa cân nặng thất bại: ${error.message}`);
+      return;
+    }
+
+    const logsRes = await db
+      .from("weight_logs")
+      .select("id, user_id, date, weight_kg, note, created_at")
+      .eq("user_id", USER_ID)
+      .order("date", { ascending: true });
+
+    setWeightLogs((logsRes.data || []) as WeightLog[]);
+    setNotice("Đã xóa bản ghi cân nặng.");
+  };
+
   const addRule = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!db) {
@@ -452,6 +511,8 @@ export default function HomePage() {
             onWeightKgChange={setWeightKg}
             onWeightNoteChange={setWeightNote}
             onAddWeightLog={addWeightLog}
+            onUpdateWeightLog={updateWeightLog}
+            onDeleteWeightLog={deleteWeightLog}
           />
         )}
 

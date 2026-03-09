@@ -51,6 +51,11 @@ export interface WeightTabProps {
   onWeightKgChange: (kg: string) => void;
   onWeightNoteChange: (note: string) => void;
   onAddWeightLog: (e: React.FormEvent<HTMLFormElement>) => Promise<void> | void;
+  onUpdateWeightLog: (
+    id: string,
+    payload: { date: string; weight_kg: number; note: string | null },
+  ) => Promise<void> | void;
+  onDeleteWeightLog: (id: string) => Promise<void> | void;
 }
 
 export interface SettingsTabProps {

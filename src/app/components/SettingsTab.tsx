@@ -59,7 +59,7 @@ export default function SettingsTab({
             />
           </div>
           <div>
-            <label className="label">Cân nặng mốc ban đầu (kg) - Tùy chọn</label>
+            <label className="label">Cân nặng mốc ban đầu (kg) - Tính từ tuần 14</label>
             <input
               type="number"
               step="0.1"
